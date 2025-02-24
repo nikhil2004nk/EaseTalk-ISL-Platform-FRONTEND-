@@ -1,0 +1,559 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EaseTalk - Modern Communication Platform</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+    <!-- Header with Navigation -->
+
+    <header>
+        <div class="container" data-aos="fade-down">
+
+            <!-- Header Top with Logo and Auth Buttons -->
+            <div class="header-top">
+                <div class="logo-container">
+                    <div class="logo animated">EaseTalk</div>
+                </div>
+                <div id="auth-section" class="auth-buttons">
+                    <div class="auth-button login-btn animated" onclick="openLogin()">Log In</div>
+                    <div class="auth-button signup-btn animated" onclick="openSignup()">Sign Up</div>
+                </div>
+                <div id="user-section" class="user-section" style="display: none;">
+                    <span id="welcome-message">Welcome, User!</span>
+                    <button onclick="logoutUser()" class="logout-btn">Logout</button>
+                </div>
+            </div>
+
+            <!-- Navigation Panel Below (Initially Hidden) -->
+            <nav id="main-navigation" class="navigation" style="display: none;">
+                <div class="nav-item animated delay-1" data-page="landing" onclick="showPage('landing')">Home
+                </div>
+                <div class="nav-item animated delay-1" data-page="gesture" onclick="showPage('gesture')">Gesture
+                    Recognition</div>
+                <div class="nav-item animated delay-2" data-page="interaction" onclick="showPage('interaction')">
+                    Interactive Learning</div>
+                <div class="nav-item animated delay-2" data-page="learning" onclick="showPage('learning')"> Gesture
+                    Dictionary
+                </div>
+                <div class="nav-item animated delay-3" data-page="help" onclick="showPage('speech')">Speech-to-text
+                </div>
+                <div class="nav-item animated delay-3" data-page="help" onclick="showPage('Custom')">Custom Sign</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Landing Page with Hero Section -->
+    <div id="landing" class="page active">
+
+        <!-- Hero Section -->
+        <section class="hero-section" data-aos="fade-up">
+            <div class="hero-shapes">
+                <div class="hero-shape shape-1"></div>
+                <div class="hero-shape shape-2"></div>
+                <div class="hero-shape shape-3"></div>
+                <div class="hero-hand">👋</div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title animated">Communicate Without Barriers</h1>
+                    <p class="hero-subtitle animated delay-1">EaseTalk uses advanced gesture recognition to make
+                        communication accessible for everyone</p>
+                    <a class="hero-cta animated delay-2" onclick="showPage('gesture')">Get Started</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Section -->
+        <section class="feature-section" data-aos="fade-up">
+            <div class="container">
+                <h2 class="section-title animated">Our Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card animated slide-in-left">
+                        <div class="feature-icon">👋</div>
+                        <h3 class="feature-title" onclick="showPage('gesture')">AI-Powered Gesture Recognition</h3>
+                        <p class="feature-description">Instantly translate sign language gestures into text and speech.
+                        </p>
+                    </div>
+                    <div class="feature-card animated slide-in-left" style="animation-delay: 0.2s;">
+                        <div class="feature-icon">💬</div>
+                        <h3 class="feature-title" onclick="showPage('interaction')">Interactive Lessons & Quizzes</h3>
+                        <p class="feature-description">Fun and engaging AI-driven learning modules to master sign
+                            language.</p>
+                    </div>
+                    <div class="feature-card animated slide-in-left" style="animation-delay: 0.4s;">
+                        <div class="feature-icon">📚</div>
+                        <h3 class="feature-title" onclick="showPage('speech')">Speech-to-Text & Text-to-Sign</h3>
+                        <p class="feature-description">Seamless two-way communication between sign and spoken languages.
+                        </p>
+                    </div>
+                    <div class="feature-card animated slide-in-left" style="animation-delay: 0.6s;">
+                        <div class="feature-icon">🌐</div>
+                        <h3 class="feature-title" onclick="showPage('learning')">Gesture Dictionary</h3>
+                        <p class="feature-description">Learn the correct way to sign with real-time animated gestures.
+                        </p>
+                    </div>
+                    <div class="feature-card animated slide-in-left" style="animation-delay: 0.8s;">
+                        <div class="feature-icon">🌐</div>
+                        <h3 class="feature-title" onclick="showPage('Custom')">Custom Sign Contributions</h3>
+                        <p class="feature-description">Help expand the community-driven sign database with new signs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Why Choose EaseTalk? Section -->
+        <section class="why-choose-section" data-aos="fade-up">
+            <div class="container">
+                <h2 class="section-title animated fade-in">Why Choose EaseTalk?</h2>
+                <div class="why-choose-grid">
+                    <div class="why-choose-card animated fade-in-up">
+                        <div class="why-choose-icon">💬</div>
+                        <h3 class="why-choose-title">Interactive Lessons & Quizzes</h3>
+                        <p class="why-choose-description">Fun and engaging AI-driven learning modules to master sign
+                            language.</p>
+                    </div>
+                    <div class="why-choose-card animated fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="why-choose-icon">📚</div>
+                        <h3 class="why-choose-title">Speech-to-Text & Text-to-Sign</h3>
+                        <p class="why-choose-description">Seamless two-way communication between sign and spoken
+                            languages.</p>
+                    </div>
+                    <div class="why-choose-card animated fade-in-up" style="animation-delay: 0.4s;">
+                        <div class="why-choose-icon">🌐</div>
+                        <h3 class="why-choose-title">Gesture Animation Playback</h3>
+                        <p class="why-choose-description">Learn the correct way to sign with real-time animated
+                            gestures.</p>
+                    </div>
+                    <div class="why-choose-card animated fade-in-up" style="animation-delay: 0.6s;">
+                        <div class="why-choose-icon">🤝</div>
+                        <h3 class="why-choose-title">Custom Sign Contributions</h3>
+                        <p class="why-choose-description">Help expand the community-driven sign database with new signs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works? Section -->
+        <section class="how-it-works-section" data-aos="fade-up">
+            <div class="container">
+                <h2 class="section-title animated fade-in">How It Works?</h2>
+                <div class="how-it-works-steps">
+                    <div class="how-it-works-step animated rotate-in">
+                        <span class="step-number">1</span>
+                        <p>Upload or show a sign gesture.</p>
+                    </div>
+                    <div class="how-it-works-step animated rotate-in" style="animation-delay: 0.3s;">
+                        <span class="step-number">2</span>
+                        <p>Our AI recognizes and converts it into text/speech.</p>
+                    </div>
+                    <div class="how-it-works-step animated rotate-in" style="animation-delay: 0.6s;">
+                        <span class="step-number">3</span>
+                        <p>Get feedback and learn with interactive lessons!</p>
+                    </div>
+                </div>
+                <a class="hero-cta animated bounce-in" style="animation-delay: 0.9s;" onclick="openSignup()">Start Your
+                    Journey Today!</a>
+            </div>
+        </section>
+
+        <!-- Who Can Use EaseTalk? Section -->
+        <section class="who-can-use-section" data-aos="fade-up">
+            <div class="container">
+                <h2 class="section-title animated fade-in">Who Can Use EaseTalk?</h2>
+                <div class="who-can-use-grid">
+                    <div class="who-can-use-card animated slide-in-right">
+                        <div class="who-can-use-icon">🎓</div>
+                        <h3 class="who-can-use-title">Beginners & Learners</h3>
+                        <p class="who-can-use-description">Learn sign language at your own pace.</p>
+                    </div>
+                    <div class="who-can-use-card animated slide-in-right" style="animation-delay: 0.2s;">
+                        <div class="who-can-use-icon">👂</div>
+                        <h3 class="who-can-use-title">Deaf & Hard-of-Hearing Community</h3>
+                        <p class="who-can-use-description">Communicate easily with non-signers.</p>
+                    </div>
+                    <div class="who-can-use-card animated slide-in-right" style="animation-delay: 0.4s;">
+                        <div class="who-can-use-icon">👨‍🏫</div>
+                        <h3 class="who-can-use-title">Educators & Trainers</h3>
+                        <p class="who-can-use-description">Use AI-powered tools to teach sign language effectively.</p>
+                    </div>
+                    <div class="who-can-use-card animated slide-in-right" style="animation-delay: 0.6s;">
+                        <div class="who-can-use-icon">👨‍👩‍👧‍👦</div>
+                        <h3 class="who-can-use-title">Parents & Friends</h3>
+                        <p class="who-can-use-description">Learn sign language to connect with loved ones.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Join the EaseTalk Community Today! Section -->
+        <section class="join-community-section" data-aos="fade-up">
+            <div class="container">
+                <h2 class="section-title animated scale-in">Join the EaseTalk Community Today!</h2>
+                <p class="community-description animated scale-in" style="animation-delay: 0.2s;">Unlock the Future of
+                    Sign Language Learning with AI.</p>
+                <a class="community-cta animated scale-in" style="animation-delay: 0.4s;" onclick="openSignup()">Sign up
+                    now and start learning
+                    for FREE!</a>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- Gesture Recognition Page -->
+    <div id="gesture" class="page">
+
+        <section class="main-content">
+
+            <div class="container">
+                <h2 class="section-title animated fade-in">Gesture Recognition</h2>
+                <div class="feature-grid">
+                    <div class="feature-card animated slide-in-left">
+                        <div class="feature-icon">👋</div>
+                        <h3 class="feature-title" onclick="showPage('hand-gesture')">Hand Tracking</h3>
+                        <p class="feature-description">Precise tracking of hand movements with 99.8% accuracy using our
+                            proprietary algorithms.</p>
+                    </div>
+
+                    <div class="feature-card animated slide-in-left" style="animation-delay: 0.3s;">
+                        <div class="feature-icon">😊</div>
+                        <h3 class="feature-title">Facial Recognition</h3>
+                        <p class="feature-description">Understand facial expressions to add context and emotion to your
+                            communications.</p>
+                    </div>
+                    <div class="feature-card animated slide-in-left" style="animation-delay: 0.6s;">
+                        <div class="feature-icon">🧍</div>
+                        <h3 class="feature-title">Posture Detection</h3>
+                        <p class="feature-description">Full-body posture recognition for comprehensive gesture commands.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Hand Tracking Section -->
+    <div id="hand-gesture" class="page">
+        <section class="hand-gesture-section">
+            <div class="hand-gesture-container">
+                <h2>Hand Gesture Tracking</h2>
+                <p class="description">
+                    Real-time hand gesture detection and tracking powered by our advanced backend model.
+                </p>
+                <div class="visualization">
+                    <video id="webcam" autoplay></video>
+                    <canvas id="output-canvas"></canvas>
+                </div>
+                <p id="gesture-result">Gesture: <span id="gesture-text">None</span></p>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- Interaction Page -->
+    <div id="interaction" class="page">
+        <section class="main-content">
+            <div class="container">
+                <h2 class="section-title animated fade-in">Interaction</h2>
+
+                <!-- Main Menu Section -->
+                <div class="quiz-container" id="mainMenu">
+                    <h3 class="animated fade-in-up">Gesture Recognition Quiz</h3>
+                    <div class="level-buttons animated fade-in-up">
+                        <button id="level1Btn" class="level-btn">Level 1: Quizs</button>
+                        <button id="level2Btn" class="level-btn">Level 2: Practical Hands-on</button>
+                    </div>
+                </div>
+
+                <!-- Level 1 - MCQ Quiz Section -->
+                <div class="quiz-container" id="mcqSection" style="display: none;">
+                    <div class="quiz-header">
+                        <h3>Level 1: Gesture Quiz</h3>
+                        <div class="score-counter">Points: <span id="pointsCounter">0</span></div>
+                        <div class="question-counter">Question: <span id="currentQuestion">1</span>/5</div>
+                    </div>
+
+                    <div class="quiz-content">
+                        <div class="gesture-image">
+                            <img id="gestureImg" src="" alt="Gesture Image">
+                        </div>
+
+                        <div class="options-container">
+                            <button class="option-btn" data-option="1"></button>
+                            <button class="option-btn" data-option="2"></button>
+                            <button class="option-btn" data-option="3"></button>
+                            <button class="option-btn" data-option="4"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Level 2 - Practical Section -->
+                <div class="quiz-container" id="practicalSection" style="display: none;">
+                    <h3>Level 2: Practical Hands-on</h3>
+                    <div class="practical-content">
+                        <div class="instruction-panel">
+                            <h4>Perform this gesture:</h4>
+                            <p id="gestureInstruction"></p>
+                        </div>
+
+                        <div class="camera-container">
+                            <video id="videoFeed" autoplay playsinline></video>
+                            <canvas id="videoCanvas" style="display: none;"></canvas>
+                        </div>
+
+                        <div class="feedback-panel">
+                            <p id="gestureFeedback"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="quiz-container" id="resultsSection" style="display: none;">
+                    <h3>Quiz Results</h3>
+                    <div class="results-content">
+                        <p>Total Points: <span id="finalScore">0</span></p>
+                        <p>Correct Answers: <span id="correctAnswers">0</span>/5</p>
+                        <button id="retryBtn" class="action-btn">Try Again</button>
+                        <button id="menuBtn" class="action-btn">Back to Menu</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Learning Page -->
+    <div id="learning" class="page">
+        <section class="main-content">
+            <div class="container">
+                <h2 class="section-title animated fade-in">Learning</h2>
+
+                <!-- Search Bar -->
+                <div class="search-container animated fade-in-up">
+                    <input type="text" id="searchInput" placeholder="Search for a gesture..."
+                        oninput="filterGestures()">
+                    <button class="search-btn" onclick="filterGestures()">🔍</button>
+                </div>
+
+                <!-- Gesture Gallery -->
+                <div class="gallery-container">
+                    <div class="gallery-grid">
+                        <!-- Example Gesture Cards -->
+                        <div class="gesture-card" data-name="Awesome">
+                            <img src="images/Awesome.jpg" alt="Awesome">
+                            <h3>Awesome</h3>
+                        </div>
+                        <div class="gesture-card" data-name="huge">
+                            <img src="images/huge.jpg" alt="huge">
+                            <h3>huge</h3>
+                        </div>
+                        <div class="gesture-card" data-name="call">
+                            <img src="images/call.jpg" alt="Help Gesture">
+                            <h3>call</h3>
+                        </div>
+                        <div class="gesture-card" data-name="dislike">
+                            <img src="images/dislike.jpg" alt="dislike">
+                            <h3>dislike</h3>
+                        </div>
+                        <div class="gesture-card" data-name="High-five">
+                            <img src="images/High-five.jpg" alt="High-five">
+                            <h3>High-five</h3>
+                        </div>
+                        <div class="gesture-card" data-name="like">
+                            <img src="images/like.jpg" alt="like Gesture">
+                            <h3>like</h3>
+                        </div>
+                        <div class="gesture-card" data-name="love">
+                            <img src="images/love.jpg" alt="love Gesture">
+                            <h3>love</h3>
+                        </div>
+                        <div class="gesture-card" data-name="promise">
+                            <img src="images/promise.jpg" alt="promise Gesture">
+                            <h3>promise</h3>
+                        </div>
+                        <div class="gesture-card" data-name="question">
+                            <img src="images/question.jpg" alt="question Gesture">
+                            <h3>question</h3>
+                        </div>
+                        <div class="gesture-card" data-name="rock">
+                            <img src="images/rock.jpg" alt="rock Gesture">
+                            <h3>rock</h3>
+                        </div>
+                        <div class="gesture-card" data-name="saluate">
+                            <img src="images/saluate.jpg" alt="saluate Gesture">
+                            <h3>saluate</h3>
+                        </div>
+                        <div class="gesture-card" data-name="stop">
+                            <img src="images/stop.jpg" alt="stop Gesture">
+                            <h3>stop</h3>
+                        </div>
+                        <div class="gesture-card" data-name="tiny">
+                            <img src="images/tiny.jpg" alt="tiny Gesture">
+                            <h3>tiny</h3>
+                        </div>
+                        <div class="gesture-card" data-name="Toilet">
+                            <img src="images/Toilet.jpg" alt="Toilet Gesture">
+                            <h3>Toilet</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Help Out Page -->
+    <div id="speech" class="page">
+        <section class="main-content">
+            <!-- Speech-to-Text Section -->
+            <section class="speech-to-text-section">
+                <div class="speech-container">
+                    <h2>Speech to Text Converter</h2>
+                    <button id="start-btn">Start Listening</button>
+                    <div id="output-box">
+                        <p id="output-text">Your speech will appear here...</p>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </div>
+
+    <!-- Custom Sign Page -->
+    <div id="Custom" class="page">
+        <section class="main-content">
+            <section class="gesture-capture-section">
+                <div class="gesture-container">
+                    <h2>Capture Your Gesture</h2>
+                    <div class="webcam-container">
+                        <div class="live-feed">
+                            <h3>Live Feed</h3>
+                            <video id="webcam" autoplay playsinline></video>
+                        </div>
+                        <div class="captured-photo">
+                            <h3>Captured Photo</h3>
+                            <img id="preview" src="#" alt="Captured Photo" style="display: none;">
+                        </div>
+                    </div>
+                    <button id="capture-btn">Capture Photo</button>
+                    <button id="retake-btn" style="display: none;">Retake Photo</button>
+                    <input type="text" id="gesture-title" placeholder="Enter gesture title" style="display: none;">
+                    <button id="save-btn" style="display: none;">Save Gesture</button>
+                    <p id="status-message"></p>
+                </div>
+            </section>
+        </section>
+    </div>
+
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content animated modal-slide-in">
+            <span class="close" onclick="closeLogin()">&times;</span>
+            <h2>Login</h2>
+            <form id="login-form" onsubmit="return handleLogin(event)">
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" name="email" required>
+
+                <label for="login-pin">Password:</label>
+                <input type="password" id="login-pin" name="pin" required>
+
+                <button type="submit" class="btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content animated modal-slide-in">
+            <span class="close" onclick="closeSignup()">&times;</span>
+            <h2>Signup Form</h2>
+            <form id="signup-form" onsubmit="return handleSignup(event)">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="signup-email">Email:</label>
+                <input type="email" id="signup-email" name="email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="contact">Contact:</label>
+                <input type="tel" id="contact" name="contact" required>
+
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+
+                <label for="education">Education:</label>
+                <input type="text" id="education" name="education" required>
+
+                <label for="disabled">Are you disabled?</label>
+                <select id="disabled" name="disabled">
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#about" class="footer-link" data-section="about">About Us</a>
+                <!-- <a href="#contact1" class="footer-link" data-section="contact">Contact</a> -->
+                <a href="#privacy" class="footer-link" data-section="privacy">Privacy Policy</a>
+            </div>
+            <p>&copy; 2025 EaseTalk. All rights reserved.</p>
+    
+            <div id="about" class="section-content">
+                <h2>About Us</h2>
+                <p>Welcome to EaseTalk! We are dedicated to providing seamless communication solutions for individuals. Our mission is to make communication easy, efficient, and enjoyable.</p>
+            </div>
+            <div id="contact1" class="section-content">
+                <h2>Contact</h2>
+                <p>Have questions or need support? Reach out to us:</p>
+                <ul>
+                    <li>Email: <a href="mailto:support@easetalk.com">support@easetalk.com</a></li>
+                    <li>Phone: <a href="tel:+11234567890">+1 (123) 456-7890</a></li>
+                </ul>
+            </div>
+            <div id="privacy" class="section-content">
+                <h2>Privacy Policy</h2>
+                <p>Your privacy is important to us. We ensure that your data is protected and used responsibly. Read our full <a href="#">Privacy Policy</a> to learn more about how we handle your information.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Include MediaPipe Hands Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <script src="qscript.js"></script>
+    <script src="script2.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
