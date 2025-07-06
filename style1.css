@@ -1,136 +1,294 @@
 /* Custom Gesture Capture Section Styling */
 #Custom .gesture-capture-section {
-    background-color: #FBF5DD; /* Light beige background */
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
+    max-width: 900px;
     margin: 0 auto;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+#Custom .gesture-capture-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
 }
 
 #Custom .gesture-container {
     text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 #Custom h2 {
-    color: #16404D; /* Dark teal for headings */
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    animation: fadeIn 1s ease-in-out;
+    color: #1e293b;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+#Custom h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    border-radius: 2px;
 }
 
 #Custom h3 {
-    color: #16404D; /* Dark teal for subheadings */
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    color: #1e293b;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
 }
 
 #Custom .webcam-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #Custom .live-feed,
 #Custom .captured-photo {
-    flex: 1;
-    background-color: #A6CDC6; /* Light teal for containers */
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+#Custom .live-feed::before,
+#Custom .captured-photo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#Custom .live-feed:hover::before,
+#Custom .captured-photo:hover::before {
+    opacity: 1;
 }
 
 #Custom .live-feed:hover,
 #Custom .captured-photo:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(99, 102, 241, 0.15);
 }
 
 #Custom video,
 #Custom img {
     width: 100%;
-    border-radius: 10px;
-    border: 2px solid #16404D; /* Dark teal border */
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid rgba(99, 102, 241, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+#Custom video:hover,
+#Custom img:hover {
+    transform: scale(1.02);
+    border-color: #6366f1;
 }
 
 #Custom img {
-    display: none; /* Hidden by default */
+    display: none;
+}
+
+#Custom img.show {
+    display: block;
 }
 
 #Custom button {
-    background-color: #DDA853; /* Gold for buttons */
-    color: #16404D; /* Dark teal text */
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
     border: none;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 5px;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 10px;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+#Custom button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+#Custom button:hover::before {
+    left: 100%;
 }
 
 #Custom button:hover {
-    background-color: #16404D; /* Dark teal on hover */
-    color: #FBF5DD; /* Light beige text on hover */
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
 }
 
 #Custom button:active {
-    transform: translateY(0);
+    transform: translateY(-1px);
+}
+
+#Custom #capture-btn {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+#Custom #capture-btn:hover {
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+}
+
+#Custom #retake-btn {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+#Custom #retake-btn:hover {
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+}
+
+#Custom #save-btn {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
 }
 
 #Custom #gesture-title {
-    width: 80%;
-    padding: 0.75rem;
-    margin-top: 1rem;
-    border: 2px solid #16404D; /* Dark teal border */
-    border-radius: 5px;
-    font-size: 1rem;
-    color: #16404D; /* Dark teal text */
-    background-color: #FBF5DD; /* Light beige background */
-    transition: border-color 0.3s ease;
+    width: 100%;
+    max-width: 400px;
+    padding: 16px 20px;
+    margin: 20px auto;
+    border: 2px solid rgba(99, 102, 241, 0.2);
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1e293b;
+    background: white;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+}
+
+#Custom #gesture-title::placeholder {
+    color: #94a3b8;
+    font-weight: 400;
 }
 
 #Custom #gesture-title:focus {
-    border-color: #DDA853; /* Gold border on focus */
     outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    transform: translateY(-1px);
 }
 
 #Custom #status-message {
-    margin-top: 1rem;
-    color: #16404D; /* Dark teal text */
-    font-size: 1rem;
-    animation: fadeIn 0.5s ease-in-out;
+    margin-top: 20px;
+    color: #1e293b;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 15px 25px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    display: inline-block;
 }
 
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+#Custom #status-message.success {
+    background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+    border-color: #10b981;
+    color: #065f46;
 }
 
-@keyframes slideIn {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+#Custom #status-message.error {
+    background: linear-gradient(135deg, #fee2e2, #fecaca);
+    border-color: #ef4444;
+    color: #991b1b;
 }
 
-/* Apply animations to elements */
-#Custom .gesture-container {
-    animation: slideIn 0.8s ease-in-out;
-}
+/* Responsive Design for Custom Page */
+@media (max-width: 768px) {
+    #Custom .gesture-capture-section {
+        padding: 30px 20px;
+        margin: 0 15px;
+    }
 
-#Custom .live-feed,
-#Custom .captured-photo {
-    animation: fadeIn 1.2s ease-in-out;
+    #Custom h2 {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    #Custom h3 {
+        font-size: 18px;
+        padding: 10px 16px;
+    }
+
+    #Custom .webcam-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    #Custom .live-feed,
+    #Custom .captured-photo {
+        padding: 20px;
+    }
+
+    #Custom video,
+    #Custom img {
+        height: 250px;
+    }
+
+    #Custom button {
+        padding: 14px 24px;
+        font-size: 14px;
+        margin: 8px;
+    }
+
+    #Custom #gesture-title {
+        padding: 14px 16px;
+        font-size: 14px;
+        margin: 15px auto;
+    }
+
+    #Custom #status-message {
+        font-size: 14px;
+        padding: 12px 20px;
+    }
 }

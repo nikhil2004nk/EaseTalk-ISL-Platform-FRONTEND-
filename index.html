@@ -73,7 +73,46 @@
                     <h1 class="hero-title animated">Communicate Without Barriers</h1>
                     <p class="hero-subtitle animated delay-1">EaseTalk uses advanced gesture recognition to make
                         communication accessible for everyone</p>
-                    <a class="hero-cta animated delay-2" onclick="showPage('gesture')">Get Started</a>
+                    <a class="hero-cta animated delay-2" onclick="checkAuthAndNavigate('gesture')">Get Started</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Login to Access Features Section -->
+        <section class="login-prompt-section" data-aos="fade-up">
+            <div class="container">
+                <div class="login-prompt-content">
+                    <div class="login-prompt-icon">🔐</div>
+                    <h2 class="section-title animated fade-in">Ready to Get Started?</h2>
+                    <p class="login-prompt-description animated fade-in" style="animation-delay: 0.2s;">
+                        Login to unlock all features and start your sign language learning journey!
+                    </p>
+                    <div class="login-prompt-features animated fade-in" style="animation-delay: 0.3s;">
+                        <div class="feature-item">
+                            <span class="feature-check">✅</span>
+                            <span>Access to all gesture recognition tools</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-check">✅</span>
+                            <span>Interactive quizzes and lessons</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-check">✅</span>
+                            <span>Speech-to-text and text-to-sign features</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-check">✅</span>
+                            <span>Gesture dictionary and learning resources</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-check">✅</span>
+                            <span>Custom sign contribution capabilities</span>
+                        </div>
+                    </div>
+                    <div class="login-prompt-buttons animated fade-in" style="animation-delay: 0.4s;">
+                        <button class="login-prompt-btn login-btn" onclick="openLogin()">Login Now</button>
+                        <button class="login-prompt-btn signup-btn" onclick="openSignup()">Create Account</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -85,31 +124,31 @@
                 <div class="feature-grid">
                     <div class="feature-card animated slide-in-left">
                         <div class="feature-icon">👋</div>
-                        <h3 class="feature-title" onclick="showPage('gesture')">AI-Powered Gesture Recognition</h3>
+                        <h3 class="feature-title" onclick="checkAuthAndNavigate('gesture')">AI-Powered Gesture Recognition</h3>
                         <p class="feature-description">Instantly translate sign language gestures into text and speech.
                         </p>
                     </div>
                     <div class="feature-card animated slide-in-left" style="animation-delay: 0.2s;">
                         <div class="feature-icon">💬</div>
-                        <h3 class="feature-title" onclick="showPage('interaction')">Interactive Lessons & Quizzes</h3>
+                        <h3 class="feature-title" onclick="checkAuthAndNavigate('interaction')">Interactive Lessons & Quizzes</h3>
                         <p class="feature-description">Fun and engaging AI-driven learning modules to master sign
                             language.</p>
                     </div>
                     <div class="feature-card animated slide-in-left" style="animation-delay: 0.4s;">
                         <div class="feature-icon">📚</div>
-                        <h3 class="feature-title" onclick="showPage('speech')">Speech-to-Text & Text-to-Sign</h3>
+                        <h3 class="feature-title" onclick="checkAuthAndNavigate('speech')">Speech-to-Text & Text-to-Sign</h3>
                         <p class="feature-description">Seamless two-way communication between sign and spoken languages.
                         </p>
                     </div>
                     <div class="feature-card animated slide-in-left" style="animation-delay: 0.6s;">
                         <div class="feature-icon">🌐</div>
-                        <h3 class="feature-title" onclick="showPage('learning')">Gesture Dictionary</h3>
+                        <h3 class="feature-title" onclick="checkAuthAndNavigate('learning')">Gesture Dictionary</h3>
                         <p class="feature-description">Learn the correct way to sign with real-time animated gestures.
                         </p>
                     </div>
                     <div class="feature-card animated slide-in-left" style="animation-delay: 0.8s;">
                         <div class="feature-icon">🌐</div>
-                        <h3 class="feature-title" onclick="showPage('Custom')">Custom Sign Contributions</h3>
+                        <h3 class="feature-title" onclick="checkAuthAndNavigate('Custom')">Custom Sign Contributions</h3>
                         <p class="feature-description">Help expand the community-driven sign database with new signs.
                         </p>
                     </div>
@@ -118,38 +157,7 @@
         </section>
 
 
-        <!-- Why Choose EaseTalk? Section -->
-        <section class="why-choose-section" data-aos="fade-up">
-            <div class="container">
-                <h2 class="section-title animated fade-in">Why Choose EaseTalk?</h2>
-                <div class="why-choose-grid">
-                    <div class="why-choose-card animated fade-in-up">
-                        <div class="why-choose-icon">💬</div>
-                        <h3 class="why-choose-title">Interactive Lessons & Quizzes</h3>
-                        <p class="why-choose-description">Fun and engaging AI-driven learning modules to master sign
-                            language.</p>
-                    </div>
-                    <div class="why-choose-card animated fade-in-up" style="animation-delay: 0.2s;">
-                        <div class="why-choose-icon">📚</div>
-                        <h3 class="why-choose-title">Speech-to-Text & Text-to-Sign</h3>
-                        <p class="why-choose-description">Seamless two-way communication between sign and spoken
-                            languages.</p>
-                    </div>
-                    <div class="why-choose-card animated fade-in-up" style="animation-delay: 0.4s;">
-                        <div class="why-choose-icon">🌐</div>
-                        <h3 class="why-choose-title">Gesture Animation Playback</h3>
-                        <p class="why-choose-description">Learn the correct way to sign with real-time animated
-                            gestures.</p>
-                    </div>
-                    <div class="why-choose-card animated fade-in-up" style="animation-delay: 0.6s;">
-                        <div class="why-choose-icon">🤝</div>
-                        <h3 class="why-choose-title">Custom Sign Contributions</h3>
-                        <p class="why-choose-description">Help expand the community-driven sign database with new signs.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+
 
         <!-- How It Works? Section -->
         <section class="how-it-works-section" data-aos="fade-up">
@@ -259,7 +267,6 @@
                 </p>
                 <div class="visualization">
                     <video id="webcam" autoplay></video>
-                    <canvas id="output-canvas"></canvas>
                 </div>
                 <p id="gesture-result">Gesture: <span id="gesture-text">None</span></p>
             </div>
@@ -481,70 +488,103 @@
     <div id="signupModal" class="modal">
         <div class="modal-content animated modal-slide-in">
             <span class="close" onclick="closeSignup()">&times;</span>
-            <h2>Signup Form</h2>
+            <h2>Create Your Account</h2>
             <form id="signup-form" onsubmit="return handleSignup(event)">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h3>Personal Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input type="number" id="age" name="age" placeholder="Enter your age" min="1" max="120" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Select gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact">Phone Number</label>
+                            <input type="tel" id="contact" name="contact" placeholder="Enter your phone number" required>
+                        </div>
+                    </div>
+                </div>
 
-                <label for="signup-email">Email:</label>
-                <input type="email" id="signup-email" name="email" required>
+                <!-- Account Information -->
+                <div class="form-section">
+                    <h3>Account Information</h3>
+                    <div class="form-group">
+                        <label for="signup-email">Email Address</label>
+                        <input type="email" id="signup-email" name="email" placeholder="Enter your email address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Create a strong password" required>
+                    </div>
+                </div>
 
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <!-- Additional Information -->
+                <div class="form-section">
+                    <h3>Additional Information</h3>
+                    <div class="form-group">
+                        <label for="education">Education Level</label>
+                        <select id="education" name="education" required>
+                            <option value="">Select education level</option>
+                            <option value="high-school">High School</option>
+                            <option value="bachelor">Bachelor's Degree</option>
+                            <option value="master">Master's Degree</option>
+                            <option value="phd">PhD</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="disabled">Do you have any disabilities?</label>
+                        <select id="disabled" name="disabled" required>
+                            <option value="">Select option</option>
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                    </div>
+                </div>
 
-                <label for="contact">Contact:</label>
-                <input type="tel" id="contact" name="contact" required>
-
-                <label for="gender">Gender:</label>
-                <select id="gender" name="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select>
-
-                <label for="age">Age:</label>
-                <input type="number" id="age" name="age" required>
-
-                <label for="education">Education:</label>
-                <input type="text" id="education" name="education" required>
-
-                <label for="disabled">Are you disabled?</label>
-                <select id="disabled" name="disabled">
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
-
-                <button type="submit" class="btn">Sign Up</button>
+                <button type="submit" class="btn">Create Account</button>
             </form>
         </div>
     </div>
 
     <footer>
         <div class="container">
-            <div class="footer-links">
-                <a href="#about" class="footer-link" data-section="about">About Us</a>
-                <!-- <a href="#contact1" class="footer-link" data-section="contact">Contact</a> -->
-                <a href="#privacy" class="footer-link" data-section="privacy">Privacy Policy</a>
-            </div>
-            <p>&copy; 2025 EaseTalk. All rights reserved.</p>
-    
-            <div id="about" class="section-content">
-                <h2>About Us</h2>
-                <p>Welcome to EaseTalk! We are dedicated to providing seamless communication solutions for individuals. Our mission is to make communication easy, efficient, and enjoyable.</p>
-            </div>
-            <div id="contact1" class="section-content">
-                <h2>Contact</h2>
-                <p>Have questions or need support? Reach out to us:</p>
-                <ul>
-                    <li>Email: <a href="mailto:support@easetalk.com">support@easetalk.com</a></li>
-                    <li>Phone: <a href="tel:+11234567890">+1 (123) 456-7890</a></li>
-                </ul>
-            </div>
-            <div id="privacy" class="section-content">
-                <h2>Privacy Policy</h2>
-                <p>Your privacy is important to us. We ensure that your data is protected and used responsibly. Read our full <a href="#">Privacy Policy</a> to learn more about how we handle your information.</p>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>EaseTalk</h3>
+                    <p>Making communication accessible</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#about" class="footer-link" data-section="about">About</a>
+                    <a href="#contact" class="footer-link" data-section="contact">Contact</a>
+                    <a href="#privacy" class="footer-link" data-section="privacy">Privacy</a>
+                    <a href="#terms" class="footer-link" data-section="terms">Terms</a>
+                </div>
+                <div class="footer-social">
+                    <a href="mailto:support@easetalk.com" class="social-link" title="Email">📧</a>
+                    <a href="tel:+11234567890" class="social-link" title="Phone">📱</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2025 EaseTalk</p>
+                </div>
             </div>
         </div>
+    
     </footer>
     <!-- Include MediaPipe Hands Library -->
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>

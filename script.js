@@ -10,6 +10,9 @@ function checkAuthStatus() {
         currentUser = JSON.parse(savedUser);
         isUserLoggedIn = true;
         updateUIForLoggedInUser();
+    } else {
+        // Show login prompt if user is not logged in
+        showLoginPrompt();
     }
 }
 
@@ -25,6 +28,40 @@ function updateUIForLoggedInUser() {
     // Update welcome message with user's name
     if (currentUser && currentUser.name) {
         document.getElementById('welcome-message').textContent = `Welcome, ${currentUser.name}!`;
+    }
+    
+    // Unlock feature cards
+    updateFeatureCardsLock();
+    
+    // Hide login prompt section
+    hideLoginPrompt();
+}
+
+// Update feature cards lock status
+function updateFeatureCardsLock() {
+    const featureCards = document.querySelectorAll('.feature-card');
+    featureCards.forEach(card => {
+        if (isUserLoggedIn) {
+            card.classList.remove('locked');
+        } else {
+            card.classList.add('locked');
+        }
+    });
+}
+
+// Hide login prompt section when user is logged in
+function hideLoginPrompt() {
+    const loginPromptSection = document.querySelector('.login-prompt-section');
+    if (loginPromptSection) {
+        loginPromptSection.style.display = 'none';
+    }
+}
+
+// Show login prompt section when user logs out
+function showLoginPrompt() {
+    const loginPromptSection = document.querySelector('.login-prompt-section');
+    if (loginPromptSection) {
+        loginPromptSection.style.display = 'block';
     }
 }
 
@@ -52,6 +89,13 @@ function handleLogin(event) {
     
     // Close the login modal
     closeLogin();
+    
+    // Redirect to intended page if exists
+    const intendedPage = localStorage.getItem('intendedPage');
+    if (intendedPage) {
+        localStorage.removeItem('intendedPage');
+        showPage(intendedPage);
+    }
     
     return false;
 }
@@ -82,6 +126,13 @@ function handleSignup(event) {
     // Close the signup modal
     closeSignup();
     
+    // Redirect to intended page if exists
+    const intendedPage = localStorage.getItem('intendedPage');
+    if (intendedPage) {
+        localStorage.removeItem('intendedPage');
+        showPage(intendedPage);
+    }
+    
     return false;
 }
 
@@ -96,6 +147,12 @@ function logoutUser() {
     document.getElementById('auth-section').style.display = 'flex';
     document.getElementById('user-section').style.display = 'none';
     document.getElementById('main-navigation').style.display = 'none';
+    
+    // Lock feature cards
+    updateFeatureCardsLock();
+    
+    // Show login prompt section
+    showLoginPrompt();
     
     // Return to landing page
     showPage('landing');
@@ -160,67 +217,25 @@ function showPage(pageId) {
             item.classList.add('active');
         }
     });
-}
 
-// Initialize all functionality on DOM load
-document.addEventListener('DOMContentLoaded', () => {
-    // Check if user is already logged in
-    checkAuthStatus();
-    
-    // Initialize AOS Animation Library
-    AOS.init({
-        duration: 800,
-        easing: 'ease-out',
-        once: true
-    });
-    
-    // Show landing page by default
-    showPage('landing');
-    
-    // Initialize form event listeners
-    document.getElementById('login-form').addEventListener('submit', handleLogin);
-    document.getElementById('signup-form').addEventListener('submit', handleSignup);
-    
-    // Add scroll-based animations
-    window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
-        if (window.scrollY > 50) {
-            header.classList.add('header-scrolled');
-        } else {
-            header.classList.remove('header-scrolled');
-        }
-    });
-});
-
-// Close modal on outside click
-window.onclick = function(event) {
-    const loginModal = document.getElementById('loginModal');
-    const signupModal = document.getElementById('signupModal');
-    
-    if (event.target === loginModal) {
-        closeLogin();
-    }
-    if (event.target === signupModal) {
-        closeSignup();
-    }
-};
-
-// Add this to your existing script.js
-
-// Modified showPage function to handle quiz initialization
-function showPage(pageId) {
-    // Hide all pages
-    document.querySelectorAll('.page').forEach(page => {
-        page.classList.remove('active');
-    });
-    
-    // Show selected page
-    document.getElementById(pageId).classList.add('active');
-    
     // If interaction page is shown, initialize quiz components
     if (pageId === 'interaction') {
         initializeQuiz();
     }
+}
+
+// Check authentication before navigating to features
+function checkAuthAndNavigate(pageId) {
+    if (!isUserLoggedIn) {
+        // Show login prompt modal or redirect to login
+        openLogin();
+        // Store the intended destination
+        localStorage.setItem('intendedPage', pageId);
+        return;
+    }
+    
+    // User is logged in, proceed to the page
+    showPage(pageId);
 }
 
 // Initialize quiz components
@@ -236,6 +251,7 @@ function initializeQuiz() {
     document.getElementById('currentQuestion').textContent = '1';
 }
 
+// Filter gestures in learning page
 function filterGestures() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
     const gestureCards = document.querySelectorAll('.gesture-card');
@@ -277,74 +293,48 @@ function filterGestures() {
     cardsArray.forEach(card => galleryGrid.appendChild(card));
 }
 
-// Check if the browser supports the Web Speech API
-if (!('webkitSpeechRecognition' in window)) {
-    alert('Your browser does not support the Web Speech API. Please use Chrome or another supported browser.');
-  } else {
-    // Initialize the speech recognition object
-    const recognition = new webkitSpeechRecognition(); // or SpeechRecognition for non-WebKit browsers
-    recognition.continuous = false; // Stop after one sentence
-    recognition.interimResults = false; // Only final results
-    recognition.lang = 'en-US'; // Set language
-  
-    // Get DOM elements
+// Speech Recognition Setup
+if ('webkitSpeechRecognition' in window) {
+    const recognition = new webkitSpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = 'en-US';
+
     const startBtn = document.getElementById('start-btn');
     const outputText = document.getElementById('output-text');
-  
-    // Start recognition when the button is clicked
+
     startBtn.addEventListener('click', () => {
-      recognition.start();
-      outputText.textContent = 'Listening...';
-      startBtn.disabled = true; // Disable button while listening
-      startBtn.textContent = 'Listening...';
+        recognition.start();
+        outputText.textContent = 'Listening...';
+        startBtn.disabled = true;
+        startBtn.textContent = 'Listening...';
     });
-  
-    // Handle the result event
+
     recognition.onresult = (event) => {
-      const transcript = event.results[0][0].transcript;
-      outputText.textContent = transcript;
-      startBtn.disabled = false; // Re-enable button
-      startBtn.textContent = 'Start Listening';
+        const transcript = event.results[0][0].transcript;
+        outputText.textContent = transcript;
+        startBtn.disabled = false;
+        startBtn.textContent = 'Start Listening';
     };
-  
-    // Handle errors
+
     recognition.onerror = (event) => {
-      outputText.textContent = 'Error occurred: ' + event.error;
-      startBtn.disabled = false; // Re-enable button
-      startBtn.textContent = 'Start Listening';
+        outputText.textContent = 'Error occurred: ' + event.error;
+        startBtn.disabled = false;
+        startBtn.textContent = 'Start Listening';
     };
-  
-    // Handle when recognition ends
+
     recognition.onend = () => {
-      if (outputText.textContent === 'Listening...') {
-        outputText.textContent = 'No speech detected. Try again.';
-      }
-      startBtn.disabled = false; // Re-enable button
-      startBtn.textContent = 'Start Listening';
+        if (outputText.textContent === 'Listening...') {
+            outputText.textContent = 'No speech detected. Try again.';
+        }
+        startBtn.disabled = false;
+        startBtn.textContent = 'Start Listening';
     };
-  }
-
-  // Get the video element
-const videoElement = document.getElementById('webcam-feed');
-
-// Check if the browser supports getUserMedia
-if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    // Access the webcam
-    navigator.mediaDevices.getUserMedia({ video: true })
-        .then(function(stream) {
-            // Set the stream as the source for the video element
-            videoElement.srcObject = stream;
-            videoElement.play();
-        })
-        .catch(function(error) {
-            console.error('Error accessing the webcam:', error);
-            alert('Error accessing the webcam. Please make sure your webcam is connected and permissions are granted.');
-        });
 } else {
-    console.error('getUserMedia is not supported in this browser');
-    alert('Your browser does not support accessing the webcam. Please use a modern browser.');
+    console.warn('Web Speech API not supported in this browser');
 }
 
+// Footer section handling
 document.addEventListener("DOMContentLoaded", function () {
     const links = document.querySelectorAll(".footer-link");
     const sections = document.querySelectorAll(".section-content");
@@ -354,7 +344,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     links.forEach(link => {
         link.addEventListener("click", function (e) {
-            e.preventDefault(); // Prevent default link behavior
+            e.preventDefault();
 
             // Get the target section ID from the data-section attribute
             const targetSectionId = this.getAttribute("data-section");
@@ -370,3 +360,49 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// Initialize all functionality on DOM load
+document.addEventListener('DOMContentLoaded', () => {
+    // Check if user is already logged in
+    checkAuthStatus();
+    
+    // Initialize AOS Animation Library
+    AOS.init({
+        duration: 800,
+        easing: 'ease-out',
+        once: true
+    });
+    
+    // Show landing page by default
+    showPage('landing');
+    
+    // Initialize form event listeners
+    document.getElementById('login-form').addEventListener('submit', handleLogin);
+    document.getElementById('signup-form').addEventListener('submit', handleSignup);
+    
+    // Set initial feature cards lock status
+    updateFeatureCardsLock();
+    
+    // Add scroll-based animations
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.classList.add('header-scrolled');
+        } else {
+            header.classList.remove('header-scrolled');
+        }
+    });
+});
+
+// Close modal on outside click
+window.onclick = function(event) {
+    const loginModal = document.getElementById('loginModal');
+    const signupModal = document.getElementById('signupModal');
+    
+    if (event.target === loginModal) {
+        closeLogin();
+    }
+    if (event.target === signupModal) {
+        closeSignup();
+    }
+};
