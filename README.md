@@ -107,6 +107,35 @@ The platform is fully responsive and optimized for:
 6. **Learning**: Practice with interactive quizzes and lessons
 7. **Speech-to-Text**: Use voice input for communication
 
+## 🔐 Authentication & Access
+
+### **Login Required for Features**
+- **All interactive features require user authentication**
+- **Sign up or login to unlock:**
+  - Hand gesture tracking and recognition
+  - Interactive learning modules and quizzes
+  - Speech-to-text conversion
+  - Gesture dictionary and search
+  - Custom sign contribution system
+- **Homepage and feature overview are accessible without login**
+- **Visual lock indicators show which features require authentication**
+
+## ⚠️ Important Notes
+
+### **Frontend-Only Implementation**
+- **This is a frontend-only project with no backend integration**
+- **User authentication is simulated using browser storage**
+- **No persistent data storage or server-side processing**
+- **All features work entirely in the browser**
+- **Perfect for demonstration and prototyping purposes**
+
+### **Technical Limitations**
+- User data is stored locally in browser storage
+- No server-side validation or security measures
+- Gesture recognition uses client-side MediaPipe processing
+- Speech recognition utilizes browser's Web Speech API
+- No database integration or cloud storage
+
 ## 🎯 Target Users
 
 - **👨‍🎓 Students & Learners**: Learn Indian Sign Language at their own pace
